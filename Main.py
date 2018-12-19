@@ -12,12 +12,12 @@ import AssignGroup
 import CalculateGroupMarks
 import Analysis
 
-from RA import ReflectiveAccounts1
-from RA import ReflectiveAccounts2
-from IPA import InverseProblemApproach
-from PA1 import PeerAssessment1
-from PA2 import PeerAssessment2
-from SOPP import SelfOrganisedPeerPressure
+from RA import RA
+from RA import MRA
+from IPA import PiM
+from PA1 import NPA
+from PA2 import PR
+from SOPP import SOPP
 
 def PrintFormattedList(List):
     FormattedList = ['%.1f' % elem for elem in List]
@@ -51,18 +51,18 @@ def SingleModelWithPrint(n,GroupSize,Model):
 
     # MODEL
     CalcResultArray = []
-    if Model == "RA1":
-        CalcResultArray = ReflectiveAccounts1(PopList, GroupMarks, AssignedGroups, GroupSize)
-    elif Model == "RA2":
-        CalcResultArray = ReflectiveAccounts2(PopList, GroupMarks, AssignedGroups, GroupSize)
-    elif Model == "IPA":
-        CalcResultArray = InverseProblemApproach(GroupMarks, AssignedGroups, n, GroupSize)
-    elif Model == "PA1":
-        CalcResultArray = PeerAssessment1(PopList, GroupMarks, AssignedGroups, GroupSize)
-    elif Model == "PA2":
-        CalcResultArray = PeerAssessment2(PopList, GroupSize, GroupMarks, AssignedGroups)
+    if Model == "RA":
+        CalcResultArray = RA(PopList, GroupMarks, AssignedGroups, GroupSize)
+    elif Model == "MRA":
+        CalcResultArray = MRA(PopList, GroupMarks, AssignedGroups, GroupSize)
+    elif Model == "PiM":
+        CalcResultArray = PiM(GroupMarks, AssignedGroups, n, GroupSize)
+    elif Model == "NPA":
+        CalcResultArray = NPA(PopList, GroupMarks, AssignedGroups, GroupSize)
+    elif Model == "PR":
+        CalcResultArray = PR(PopList, GroupSize, GroupMarks, AssignedGroups)
     elif Model == "SOPP":
-        CalcResultArray = SelfOrganisedPeerPressure(GroupMarks, AssignedGroups, n)
+        CalcResultArray = SOPP(GroupMarks, AssignedGroups, n)
     else:
         print("There is no program for this model")
         return
@@ -86,22 +86,22 @@ def RunAllModels(n,GroupSize):
     #Calculate Group Marks
     GroupMarks = CalculateGroupMarks.Function(PopList, AssignedGroups)
     # RA1 MODEL
-    CalcResultArray = ReflectiveAccounts1(PopList, GroupMarks, AssignedGroups, GroupSize)
+    CalcResultArray = RA(PopList, GroupMarks, AssignedGroups, GroupSize)
     RA1Results = Analysis.ResultArray(PopList, CalcResultArray)
     # RA2 MODEL
-    CalcResultArray = ReflectiveAccounts2(PopList, GroupMarks, AssignedGroups, GroupSize)
+    CalcResultArray = MRA(PopList, GroupMarks, AssignedGroups, GroupSize)
     RA2Results = Analysis.ResultArray(PopList, CalcResultArray)
     # IPA MODEL
-    CalcResultArray = InverseProblemApproach(GroupMarks, AssignedGroups, n, GroupSize)
+    CalcResultArray = PiM(GroupMarks, AssignedGroups, n, GroupSize)
     IPAResults = Analysis.ResultArray(PopList, CalcResultArray)
     # PA1 MODEL
-    CalcResultArray = PeerAssessment1(PopList, GroupMarks, AssignedGroups, GroupSize)
+    CalcResultArray = NPA(PopList, GroupMarks, AssignedGroups, GroupSize)
     PA1Results = Analysis.ResultArray(PopList, CalcResultArray)
     # PA2 MODEL
-##    CalcResultArray = PeerAssessment2(PopList, GroupMarks, AssignedGroups)
+##    CalcResultArray = PR(PopList, GroupMarks, AssignedGroups)
 ##    PA2Results = Analysis.ResultArray(PopList, CalcResultArray)
     # SOPP MODEL
-    CalcResultArray = SelfOrganisedPeerPressure(GroupMarks, AssignedGroups, n)
+    CalcResultArray = SOPP(GroupMarks, AssignedGroups, n)
     SOPPResults = Analysis.ResultArray(PopList, CalcResultArray)
     #Create List of Results
     Results = [RA1Results, RA2Results, [], PA1Results, [], SOPPResults]
@@ -110,7 +110,7 @@ def RunAllModels(n,GroupSize):
         PrintResults(result)
 
 Perfect = [[0,100],[0,100]]
-P_List = SingleModelWithPrint(52,4,"SOPP")
+P_List = SingleModelWithPrint(52,4,"PiM")
     
 ##for n in range(0,1):
 ##    TempResults = SingleModelWithPrint(20,4,"RA2")

@@ -56,7 +56,7 @@ def SingleGroupPA(IdealMarks, GroupMark):
 
     return ModelMarks
 
-def PeerAssessment1(Population, GroupMarks, AssignedGroups, GroupSize):
+def NPA(Population, GroupMarks, AssignedGroups, GroupSize):
     # Work out how many different projects there are
     NumberOfGroups = int( len(Population) / GroupSize )
     Projects = int( len(GroupMarks) / NumberOfGroups )

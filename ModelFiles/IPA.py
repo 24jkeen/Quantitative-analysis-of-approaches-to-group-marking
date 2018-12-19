@@ -21,7 +21,7 @@ def PrintMatrix(M):
     for element in M:
         print(element)
 
-def InverseProblemApproach(GroupMarks, AssignedGroups, n, GroupSize):
+def PiM(GroupMarks, AssignedGroups, n, GroupSize):
     M = MakeGroupMatrix(AssignedGroups, n)
     #PrintMatrix(M)
     PseudoInverse = numpy.linalg.pinv(M)

@@ -16,7 +16,7 @@ def SelfAssess(RankedStudentMark):
     # To remove randomness, comment out previous code and uncomment code below
     #return RankedStudentMark
 
-def ReflectiveAccounts1(Population, GroupMarks, AssignedGroups, GroupSize):
+def RA(Population, GroupMarks, AssignedGroups, GroupSize):
     CalcResults = []
     for n in range(len(Population)):
         CalcResults.append(0)
@@ -32,7 +32,7 @@ def ReflectiveAccounts1(Population, GroupMarks, AssignedGroups, GroupSize):
 
     return CalcResults
 
-def ReflectiveAccounts2(Population, GroupMarks, AssignedGroups, GroupSize):
+def MRA(Population, GroupMarks, AssignedGroups, GroupSize):
     CalcResults = []
     for n in range(len(Population)):
         CalcResults.append(0)

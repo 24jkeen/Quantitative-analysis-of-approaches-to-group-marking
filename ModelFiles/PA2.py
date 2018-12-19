@@ -102,7 +102,7 @@ def CalculateMarks(GroupSize, GroupMark, EigenVec):
     return Marks
 
         
-def PeerAssessment2(Population, GroupSize, GroupMarks, AssignedGroups):
+def PR(Population, GroupSize, GroupMarks, AssignedGroups):
     CalcResultsArray = []
     for n in range(len(Population)):
         CalcResultsArray.append(0)
