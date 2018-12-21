@@ -110,7 +110,7 @@ def RunAllModels(n,GroupSize):
         PrintResults(result)
 
 Perfect = [[0,100],[0,100]]
-P_List = SingleModelWithPrint(52,4,"PiM")
+P_List = SingleModelWithPrint(52,4,"PiM") # Edit this line to change model
     
 ##for n in range(0,1):
 ##    TempResults = SingleModelWithPrint(20,4,"RA2")
